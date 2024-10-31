@@ -1,0 +1,16 @@
+SELECT ?constellation ?constellationLabel ?neighbor ?neighborLabel WHERE {
+  # Find constellations
+  ?constellation wdt:P31 ?instance
+  VALUES ?instance {wd:Q8928 wd:Q4193029}
+  MINUS{?constellation wdt:P31 wd:Q1620914}
+  OPTIONAL {
+    ?constellation wdt:P47 ?neighbor.  # Neighbors
+    #?neighbor wdt:P31 ?instance
+    #VALUES ?instance {wd:Q8928 wd:Q4193029}# Ensure neighbors are also constellations
+  }
+  # Find neighboring constellations
+  
+  # Label service for localization
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ru" }
+}
+ORDER BY ?constellationLabel

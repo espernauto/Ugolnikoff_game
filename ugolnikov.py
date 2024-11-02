@@ -110,6 +110,8 @@ class GameOfUgoles:
             if len(cons_nei[next_cons]) == 0:
                 return machine_win_text
             our_cons = input()
+            if our_cons == "Кентавр":
+                our_cons = "Центавр"
             while our_cons not in cons_nei[curr_cons]:
                 curr_error += 1
                 if error_limit - curr_error > 1:
@@ -119,6 +121,8 @@ class GameOfUgoles:
                 if curr_error == error_limit:
                     return machine_win_text
                 our_cons = input()
+                if our_cons == "Кентавр":
+                    our_cons = "Центавр"
             cons_nei = self.update(copy.deepcopy(cons_nei), curr_cons)
             curr_cons = our_cons
             if len(cons_nei[curr_cons]) == 0:
@@ -146,6 +150,9 @@ for i in range(len(df)):
 print("Введите стартовое созвездие. Если оно состоит из двух слов, то оба слова с большой буквы. Если в нем есть буква ё, то буква ё строго обязательна...")
 
 begin = input()
+
+if begin == "Кентавр":
+    begin = "Центавр"
 
 print("Введите режим. На данный момент доступно два: режим Ugolnikoff -- стандартная игра Угольникова, где нужно дойти от начала до конца и режим Endless journey, в котором программа ходит рандомно и игра идёт до трех ваших ошибок")
 
